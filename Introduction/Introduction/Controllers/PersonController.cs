@@ -35,8 +35,16 @@ namespace Introduction.Controllers
         [HttpPost] //enkel via een submit geraak je hierin
         public IActionResult RegisterNew(RegisterVM personVM)
         {
-            //Commando's
-            return View();
+            if (ModelState.IsValid)
+            {
+                //opslaan in database
+                return View("Thanks", personVM);
+            }
+            else
+            {
+                //terug naar formulier met fouten
+                return View();
+            }
         }
 
 
